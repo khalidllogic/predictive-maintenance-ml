@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khalid Logic | Predictive Maintenance System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-dark-custom">
+
+    <div class="d-flex" id="wrapper">
+        <!-- الشريط الجانبي (Sidebar) -->
+        <div class="sidebar glass-panel" id="sidebar-wrapper">
+            <div class="sidebar-heading text-center py-4 border-bottom border-secondary">
+                <h3 class="brand-text fw-bold mb-0"><i class="fa-solid fa-microchip"></i> Khalid Logic</h3>
+                <small class="text-muted">Industrial AI System</small>
+            </div>
+            <div class="list-group list-group-flush mt-4">
+                <a href="#" class="list-group-item list-group-item-action bg-transparent text-light active-nav">
+                    <i class="fa-solid fa-chart-line me-2"></i> لوحة القيادة
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent text-muted">
+                    <i class="fa-solid fa-server me-2"></i> حالة المستشعرات
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent text-muted">
+                    <i class="fa-solid fa-clock-rotate-left me-2"></i> سجل الصيانة
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent text-muted">
+                    <i class="fa-solid fa-gear me-2"></i> إعدادات النظام
+                </a>
+            </div>
+        </div>
+
+        <!-- المحتوى الرئيسي (Main Content) -->
+        <div id="page-content-wrapper" class="w-100 p-4">
+            
+            <!-- شريط علوي -->
+            <nav class="navbar navbar-dark bg-transparent mb-4">
+                <div class="container-fluid">
+                    <h4 class="text-light mb-0">نظام المراقبة والصيانة التنبؤية (Predictive Maintenance)</h4>
+                    <div class="d-flex align-items-center">
+                        <span class="badge bg-success p-2 fs-6"><i class="fa-solid fa-circle-check"></i> الخادم متصل</span>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- بطاقات الإحصائيات الوهمية لإعطاء طابع النظام الشامل -->
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="card stat-card glass-panel border-0 shadow-sm">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted">الآلات النشطة</h6>
+                                <h3 class="text-light mb-0">12 / 12</h3>
+                            </div>
+                            <div class="icon-box bg-primary text-white"><i class="fa-solid fa-industry"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card stat-card glass-panel border-0 shadow-sm">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted">دقة نموذج الذكاء الاصطناعي</h6>
+                                <h3 class="text-light mb-0">98.25%</h3>
+                            </div>
+                            <div class="icon-box bg-success text-white"><i class="fa-solid fa-brain"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card stat-card glass-panel border-0 shadow-sm">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-muted">الأعطال المتوقعة (اليوم)</h6>
+                                <h3 class="text-warning mb-0">0</h3>
+                            </div>
+                            <div class="icon-box bg-warning text-dark"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- قسم إدخال قراءات الحساسات الحية -->
+                <div class="col-lg-8">
+                    <div class="card glass-panel border-0 shadow-lg mb-4">
+                        <div class="card-header bg-transparent border-bottom border-secondary p-3">
+                            <h5 class="text-light mb-0"><i class="fa-solid fa-sliders text-info me-2"></i> المراقبة الحية للحساسات (Live Telemetry)</h5>
+                        </div>
+                        <div class="card-body p-4">
+                            <form action="/predict" method="POST">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label text-light small">جودة الآلة (Type)</label>
+                                        <select class="form-select custom-input" name="type" required>
+                                            <option value="1">منخفضة (L)</option>
+                                            <option value="2">متوسطة (M)</option>
+                                            <option value="0">عالية (H)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label text-light small">درجة حرارة الهواء [K]</label>
+                                        <input type="number" step="any" class="form-control custom-input" name="air_temp" required placeholder="مثال: 298.1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label text-light small">درجة حرارة العملية [K]</label>
+                                        <input type="number" step="any" class="form-control custom-input" name="process_temp" required placeholder="مثال: 308.6">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label text-light small">سرعة الدوران [rpm]</label>
+                                        <input type="number" step="any" class="form-control custom-input" name="rotational_speed" required placeholder="مثال: 1551">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label text-light small">عزم الدوران [Nm]</label>
+                                        <input type="number" step="any" class="form-control custom-input" name="torque" required placeholder="مثال: 42.8">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label text-light small">تآكل الأداة [min]</label>
+                                        <input type="number" step="any" class="form-control custom-input" name="tool_wear" required placeholder="مثال: 0">
+                                    </div>
+                                </div>
+                                <div class="mt-4 text-end">
+                                    <button type="submit" class="btn btn-primary px-5 fw-bold submit-btn">
+                                        <i class="fa-solid fa-radar me-2"></i> تحليل البيانات بالذكاء الاصطناعي
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- قسم نتيجة التنبؤ -->
+                <div class="col-lg-4">
+                    <div class="card glass-panel border-0 shadow-lg">
+                        <div class="card-header bg-transparent border-bottom border-secondary p-3">
+                            <h5 class="text-light mb-0"><i class="fa-solid fa-desktop text-info me-2"></i> حالة الآلة (System Output)</h5>
+                        </div>
+                        <div class="card-body p-4 text-center d-flex flex-column justify-content-center" style="min-height: 250px;">
+                            {% if prediction_text %}
+                                {% if status == 'danger' %}
+                                    <div class="pulse-danger mx-auto mb-3"><i class="fa-solid fa-triangle-exclamation fa-3x text-danger"></i></div>
+                                    <h4 class="text-danger fw-bold">تحذير حرج!</h4>
+                                    <p class="text-light mt-2">{{ prediction_text }}</p>
+                                {% else %}
+                                    <div class="pulse-success mx-auto mb-3"><i class="fa-solid fa-shield-check fa-3x text-success"></i></div>
+                                    <h4 class="text-success fw-bold">الآلة مستقرة</h4>
+                                    <p class="text-light mt-2">{{ prediction_text }}</p>
+                                {% endif %}
+                            {% else %}
+                                <i class="fa-solid fa-satellite-dish fa-3x text-muted mb-3"></i>
+                                <h5 class="text-muted">في انتظار البيانات...</h5>
+                                <p class="text-muted small">قم بإدخال قراءات الحساسات لتشغيل نموذج Random Forest.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

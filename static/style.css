@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap');
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: #0b1121; /* خلفية صناعية داكنة */
+    color: #f8fafc;
+    overflow-x: hidden;
+}
+
+.brand-text {
+    background: -webkit-linear-gradient(45deg, #00f2fe, #4facfe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* تنسيق الشريط الجانبي */
+#wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 260px;
+    min-height: 100vh;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.list-group-item {
+    border: none;
+    padding: 15px 20px;
+    transition: all 0.3s;
+}
+
+.list-group-item:hover, .active-nav {
+    background: rgba(79, 172, 254, 0.1) !important;
+    color: #4facfe !important;
+    border-right: 4px solid #4facfe;
+}
+
+/* الألواح الزجاجية */
+.glass-panel {
+    background: #111827;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px;
+}
+
+.icon-box {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 1.2rem;
+}
+
+/* حقول الإدخال */
+.custom-input {
+    background-color: #1f2937 !important;
+    border: 1px solid #374151 !important;
+    color: #e5e7eb !important;
+    border-radius: 6px;
+}
+
+.custom-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(79, 172, 254, 0.25);
+    border-color: #4facfe !important;
+}
+
+/* زر التحليل */
+.submit-btn {
+    background: linear-gradient(45deg, #0052d4, #4364f7, #6fb1fc);
+    border: none;
+    border-radius: 6px;
+    transition: transform 0.2s;
+}
+
+.submit-btn:hover {
+    transform: scale(1.02);
+}
+
+/* تأثيرات النبض لحالة الآلة */
+.pulse-success {
+    animation: pulse-green 2s infinite;
+}
+
+.pulse-danger {
+    animation: pulse-red 1s infinite;
+}
+
+@keyframes pulse-green {
+    0% { transform: scale(0.95); text-shadow: 0 0 0 rgba(22, 163, 74, 0.7); }
+    70% { transform: scale(1); text-shadow: 0 0 20px rgba(22, 163, 74, 0); }
+    100% { transform: scale(0.95); text-shadow: 0 0 0 rgba(22, 163, 74, 0); }
+}
+
+@keyframes pulse-red {
+    0% { transform: scale(0.95); text-shadow: 0 0 0 rgba(220, 38, 38, 0.7); }
+    70% { transform: scale(1.1); text-shadow: 0 0 30px rgba(220, 38, 38, 0); }
+    100% { transform: scale(0.95); text-shadow: 0 0 0 rgba(220, 38, 38, 0); }
+}
